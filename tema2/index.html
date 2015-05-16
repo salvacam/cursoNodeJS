@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Ejercicio Obligatorio M&oacute;dulo 2</title>
+    <style type="text/css">
+        body {
+            background-color: lightgray;
+        }
+        
+        #contenido {
+            padding: 5px;
+            background-color: gray;
+            width: 75%;
+            min-width: 310px;
+            margin: 0 auto;
+        }
+        
+        #noticias {
+            background-color: #F3F3F3;
+            padding: 10px;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="contenido">
+        <h1>M&oacute;dulo 2. Ejercicio P2P obligatorio</h1>
+        <h3>Agenda</h3>
+
+        <button id="ver">Ver Agenda</button>
+        <button id="borrar">Borrar</button>
+        
+        <p id="datos"></p>
+        
+        <p>Se muestra adem&aacute;s por consola como se pide en el ejercicio.</p>
+    </div>
+    <script type="text/javascript">
+        function agenda(titulo, inic) {
+            var _titulo = titulo;
+            var _contenido = inic;
+
+            return {
+                titulo: function () {
+                    return _titulo;
+                },
+                meter: function (nombre, tf) {
+                    _contenido[nombre] = tf;
+                },
+                tf: function (nombre) {
+                    return _contenido[nombre];
+                },
+                borrar: function (nombre) {
+                    delete _contenido[nombre];
+                },
+                toJSON: function () {
+                    return JSON.stringify(_contenido);
+                },
+                listar: function () {
+                    this.meter;
+                    var salida = "";
+                    for (var item in _contenido) {
+                        salida += item+", "+ this.tf(item) +"\n";                        
+                    }
+                    salida = salida.trim();
+                    console.log(salida);
+                    salida = salida.replace(/\n/g, "<br/>");
+                    return salida;
+                }
+            }
+        }
+        var amigos = agenda("Amigos", {
+            Pepe: 113278561,
+            José: 157845123,
+            Jesús: 178512355
+        });
+        
+        amigos.listar();
+        var ver = document.getElementById("ver");
+        ver.addEventListener("click", function(){
+            document.getElementById("datos").innerHTML= amigos.listar();
+        });
+        var borrar = document.getElementById("borrar");
+        borrar.addEventListener("click", function(){
+            document.getElementById("datos").innerHTML= "";
+        });
+    </script>
+</body>
+
+</html>
