@@ -59,10 +59,9 @@
                     return JSON.stringify(_contenido);
                 },
                 listar: function () {
-                    this.meter;
                     var salida = "";
                     for (var item in _contenido) {
-                        salida += item+", "+ this.tf(item) +"\n";                        
+                        salida += item+", "+ _contenido[item] +"\n";                        
                     }
                     salida = salida.trim();
                     console.log(salida);
