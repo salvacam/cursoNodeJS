@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js</title>
+    <link rel="stylesheet" href="./css/estilos.css">
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            Ejercicio P2P Módulo 4
+        </div>
+    </header>
+
+
+    <div class="content">
+        <h3>Responde a una de las dos preguntas</h3>
+        <br/>
+        <form method="post" action="respuesta" id="enviar1">
+            <label for="america">
+                ¿Quién descubrio América?
+            </label>
+            <input name="america" id="america" type="text" />
+            <input type="hidden" name="pregunta" value="1" />
+
+            <input type="submit" value="Enviar Respuesta" />
+        </form>
+
+        <br/>
+
+        <form method="post" action="respuesta" id="enviar2">
+            <label for="portugal">
+                ¿Cuál es la cápital de Portugal?
+            </label>
+            <input name="portugal" id="portugal" type="text" />
+            <input type="hidden" name="pregunta" value="2" />
+
+            <input type="submit" value="Enviar Respuesta" />
+        </form>
+    </div>
+
+    <footer>
+        <div class="content">
+            Curso Node.js
+        </div>
+    </footer>
+    <script>
+        var enviar1 = document.getElementById("enviar1");
+        enviar1.addEventListener("submit", function (e) {
+            if (document.getElementById("america").value.trim() == "" ||
+                document.getElementById("america").value.trim() == undefined) {
+                alert("valores vacios");
+                e.preventDefault();
+            }
+        });
+        var enviar2 = document.getElementById("enviar2");
+        enviar2.addEventListener("submit", function (e) {
+            if (document.getElementById("portugal").value.trim() == "" ||
+                document.getElementById("portugal").value.trim() == undefined) {
+                alert("valores vacios");
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+
+</html>
